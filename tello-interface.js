@@ -103,11 +103,6 @@ class TelloInterface {
   }
 
 
-  KILL() {
-    this.send('emergency');
-  }
-
-
   send(command) {
     return new Promise((resolve, reject) => {
       this._drone.send(command, 0, command.length, this.DRONE_PORT, this.HOST);
@@ -120,8 +115,7 @@ class TelloInterface {
         });
     });
   }
-
-
+  
   async queue(commandsArray) {
 
     if (!Array.isArray(commandsArray)) {
@@ -131,8 +125,8 @@ class TelloInterface {
     for (const command of commandsArray) {
       await this.send(command);
     }
-
   }
+  
 }
 
 
