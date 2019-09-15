@@ -102,6 +102,11 @@ class TelloInterface {
     console.log(`!! Error: ${err}.`);
   }
 
+  //Stop all motors immediately
+  KILL() {
+    this.send('emergency');
+  }
+
 
   send(command) {
     return new Promise((resolve, reject) => {
